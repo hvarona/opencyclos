@@ -1,12 +1,12 @@
 buildscript {
     repositories {
-        mavenLocal()
+        mavenCentral()
         maven { url "https://repo.grails.org/grails/core" }
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.11.6"
-        classpath "org.grails.plugins:hibernate5:6.0.4"
+        classpath "org.grails.plugins:hibernate5:6.0.4"        
     }
 }
 
@@ -21,8 +21,11 @@ apply plugin:"org.grails.grails-gsp"
 apply plugin:"asset-pipeline"
 
 repositories {
-    mavenLocal()
+    mavenCentral()
     maven { url "https://repo.grails.org/grails/core" }
+    flatDir {
+       dirs 'lib'
+    }
 }
 
 dependencyManagement {
@@ -45,6 +48,50 @@ dependencies {
     compile "org.grails.plugins:hibernate5"
     compile "org.hibernate:hibernate-core:5.1.2.Final"
     compile "org.hibernate:hibernate-ehcache:5.1.2.Final"
+    
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
+    
+    // https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils
+    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
+    
+    // https://mvnrepository.com/artifact/org.apache.lucene/lucene-core
+    compile group: 'org.apache.lucene', name: 'lucene-core', version: '4.10.4'
+    
+    // https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-common
+    compile group: 'org.apache.lucene', name: 'lucene-analyzers-common', version: '4.10.4'
+    
+    // https://mvnrepository.com/artifact/org.apache.derby/derby
+    compile group: 'org.apache.derby', name: 'derby', version: '10.12.1.1'
+    
+    // https://mvnrepository.com/artifact/org.apache.lucene/lucene-queryparser
+    compile group: 'org.apache.lucene', name: 'lucene-queryparser', version: '4.10.4'
+    
+    // https://mvnrepository.com/artifact/org.apache.lucene/lucene-queries
+    compile group: 'org.apache.lucene', name: 'lucene-queries', version: '4.10.4'
+    
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    compile group: 'commons-io', name: 'commons-io', version: '2.4'
+    
+    // https://mvnrepository.com/artifact/org.jfree/jfreechart
+    compile group: 'org.jfree', name: 'jfreechart', version: '1.0.19'
+
+    // https://mvnrepository.com/artifact/org.apache.cxf/cxf-core
+    compile group: 'org.apache.cxf', name: 'cxf-core', version: '3.1.8'
+
+    // https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-bindings-soap
+    compile group: 'org.apache.cxf', name: 'cxf-rt-bindings-soap', version: '3.1.8'
+
+    // https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-transports-http
+    compile group: 'org.apache.cxf', name: 'cxf-rt-transports-http', version: '3.1.8'
+    
+    // https://mvnrepository.com/artifact/commons-cli/commons-cli
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.3.1'
+
+    // https://mvnrepository.com/artifact/org.apache.openjpa/openjpa
+    compile group: 'org.apache.openjpa', name: 'openjpa', version: '2.4.1'
+
+
     console "org.grails:grails-console"
     profile "org.grails.profiles:web"
     runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.11.6"
