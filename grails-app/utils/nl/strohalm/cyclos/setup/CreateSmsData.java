@@ -28,6 +28,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
+import javax.persistence.EntityManager;
 
 import nl.strohalm.cyclos.access.MemberPermission;
 import nl.strohalm.cyclos.entities.access.Channel;
@@ -132,11 +133,11 @@ public class CreateSmsData implements Runnable {
     }
 
     private void createLocalSettings() {
-        CreateBasicData.createSetting(session, Setting.Type.LOCAL, "cyclosId", "cyclos");
-        CreateBasicData.createSetting(session, Setting.Type.LOCAL, "smsEnabled", "true");
-        CreateBasicData.createSetting(session, Setting.Type.LOCAL, "smsCustomFieldId", mobileCustomField.getId().toString());
-        CreateBasicData.createSetting(session, Setting.Type.LOCAL, "smsChannelName", smsChannel.getInternalName());
-        CreateBasicData.createSetting(session, Setting.Type.LOCAL, "sendSmsWebServiceUrl", "http://localhost:8080/sms/services/smsSender");
+        CreateBasicData.createSetting((EntityManager) session, Setting.Type.LOCAL, "cyclosId", "cyclos");
+        CreateBasicData.createSetting((EntityManager) session, Setting.Type.LOCAL, "smsEnabled", "true");
+        CreateBasicData.createSetting((EntityManager) session, Setting.Type.LOCAL, "smsCustomFieldId", mobileCustomField.getId().toString());
+        CreateBasicData.createSetting((EntityManager) session, Setting.Type.LOCAL, "smsChannelName", smsChannel.getInternalName());
+        CreateBasicData.createSetting((EntityManager) session, Setting.Type.LOCAL, "sendSmsWebServiceUrl", "http://localhost:8080/sms/services/smsSender");
     }
 
     private void createServiceClient() {
